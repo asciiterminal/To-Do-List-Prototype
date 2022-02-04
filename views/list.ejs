@@ -1,0 +1,51 @@
+<!-- //As we discussed earlier that the {view engine} for the ejs
+//will scan through the code to look for an ejs file, therefore
+//we created a folder named "views".
+//{.ejs} is like an {.html} file. -->
+
+<%- include('header'); -%>
+
+<!-- What this implementation for the "header" and "footer" as below does is
+that it allows us to only use these tags to "style" every page these
+are added to in a website without the need of repeating the whole time consuming
+proccess to add/create styles for every page/section in a website
+i personally love this concept.Check the {about.ejs} file to
+understand the concept better. -->
+
+    <div class="box" id="heading">
+
+      <h1> <%= listTitle %> </h1>
+
+    </div>
+    <!-- These tags {< %} are called scriplets tags and they allow us to use
+  flow-control i.e small javascript codes line-by-line,Hence them being
+  added on ever JavaScript operation line-by-line.But to make things shorter we will resort to using { < % = %> } -->
+
+    <div class="box">
+
+
+
+      <!-- <li> < %= newListItem %> </li> we will make a for loop to avoid
+  adding the values to the same list line -->
+
+      <% for (let i =0; i < newListItems.length; i++) { %>
+      <div class="item">
+        <input type="checkbox">
+        <p> <%= newListItems[i] %></p>
+      </div>
+      <!-- < % back to using scriplets %> -->
+
+      <% } %>
+
+        <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item"  autocomplete="off">
+        <button type="submit" name="list" value= <%= listTitle %> >+</button>
+         <!-- The {button} {value} and {h1} being computed as {< % = listTitle % >}   -->
+         <!-- Tells us that on which list page we are on whether its the Default page
+       or the Work List page -->
+        </form>
+
+
+    </div>
+
+    <%- include('footer'); -%>
